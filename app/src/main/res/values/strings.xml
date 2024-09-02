@@ -2,4 +2,8 @@
     <string name="app_name">MyMiso</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="offer">Offer</string>
+    <string name="rating_4_5">Rating: 4.5</string>
+    <string name="cost_for_two">Cost for Two</string>
+    <string name="restaurant_name">Restaurant Name</string>
 </resources>

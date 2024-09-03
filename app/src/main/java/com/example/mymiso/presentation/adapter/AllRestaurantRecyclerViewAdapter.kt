@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
 import com.example.mymiso.databinding.ItemAllRestaurantBinding
 import com.example.mymiso.presentation.model.Restaurant
 
@@ -30,6 +31,7 @@ class AllRestaurantRecyclerViewAdapter :
             restaurantName.text = restaurant.name
             restaurantCost.text = ""
             restaurantRating.text = restaurant.rating.toString()
+            Glide.with(this.root).load(restaurant.image).into(restaurantImage)
             root.setOnClickListener {
                 onItemClickListener?.let {
                     it(restaurant)

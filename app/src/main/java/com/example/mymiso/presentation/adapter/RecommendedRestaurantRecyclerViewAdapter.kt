@@ -5,13 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mymiso.databinding.ItemAllRestaurantBinding
+import com.bumptech.glide.Glide
+import com.example.mymiso.databinding.ItemRecommendedRestaurantBinding
 import com.example.mymiso.presentation.model.Restaurant
 
 class RecommendedRestaurantRecyclerViewAdapter :
     RecyclerView.Adapter<RecommendedRestaurantRecyclerViewAdapter.RecommendedRestaurantViewHolder>() {
 
-    inner class RecommendedRestaurantViewHolder(val binding: ItemAllRestaurantBinding) :
+    inner class RecommendedRestaurantViewHolder(val binding: ItemRecommendedRestaurantBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(
@@ -19,7 +20,11 @@ class RecommendedRestaurantRecyclerViewAdapter :
         viewType: Int
     ): RecommendedRestaurantViewHolder {
         val binding =
-            ItemAllRestaurantBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemRecommendedRestaurantBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         return RecommendedRestaurantViewHolder(binding)
 
     }
@@ -32,8 +37,8 @@ class RecommendedRestaurantRecyclerViewAdapter :
         val restaurant = differ.currentList[position]
         holder.binding.apply {
             restaurantName.text = restaurant.name
-            restaurantCost.text = ""
             restaurantRating.text = restaurant.rating.toString()
+            Glide.with(this.root).load(restaurant.image).into(restaurantImage)
             root.setOnClickListener {
                 onItemClickListener?.let {
                     it(restaurant)

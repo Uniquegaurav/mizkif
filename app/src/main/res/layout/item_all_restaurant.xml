@@ -1,65 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:padding="8dp"
-    app:cardElevation="4dp"
-    app:cardCornerRadius="8dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
 
-        <ImageView
-            android:id="@+id/restaurantImage"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_marginEnd="8dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/restaurantName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="@id/restaurantImage"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="Restaurant Name" />
+            <ImageView
+                android:id="@+id/restaurantImage"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginEnd="8dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/restaurantRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/restaurantName"
-            app:layout_constraintStart_toStartOf="@id/restaurantImage"
-            android:text="Rating: 4.5" />
+            <TextView
+                android:id="@+id/restaurantName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Restaurant Name"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/restaurantImage"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/restaurantOffer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/restaurantRating"
-            app:layout_constraintStart_toStartOf="@id/restaurantImage"
-            android:text="Offer: 20% off" />
+            <TextView
+                android:id="@+id/restaurantRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rating: 4.5"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/restaurantImage"
+                app:layout_constraintTop_toBottomOf="@id/restaurantName" />
 
-        <TextView
-            android:id="@+id/restaurantCost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/restaurantOffer"
-            app:layout_constraintStart_toStartOf="@id/restaurantImage"
-            android:text="Cost for two: $30" />
+            <TextView
+                android:id="@+id/restaurantOffer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Offer: 20% off"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/restaurantImage"
+                app:layout_constraintTop_toBottomOf="@id/restaurantRating" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/restaurantCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cost for two: $30"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/restaurantImage"
+                app:layout_constraintTop_toBottomOf="@id/restaurantOffer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

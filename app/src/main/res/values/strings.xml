@@ -9,4 +9,5 @@
     <string name="profile">Profile</string>
     <string name="dineout">Dineout</string>
     <string name="home">Home</string>
+    <string name="some_description">some description</string>
 </resources>

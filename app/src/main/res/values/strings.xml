@@ -10,4 +10,8 @@
     <string name="dineout">Dineout</string>
     <string name="home">Home</string>
     <string name="some_description">some description</string>
+    <string name="offer_20_off">Offer: 20% off</string>
+    <string name="cost_for_two_30">Cost for two: $30</string>
+    <string name="rating_4_5_2">Rating: 4.5</string>
+    <string name="restaurant_name_2">Restaurant Name</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.mymiso.presentation.model
+package com.example.mymiso.presentation.profile_screen.model
 
 data class Data(
     val limit: Int,

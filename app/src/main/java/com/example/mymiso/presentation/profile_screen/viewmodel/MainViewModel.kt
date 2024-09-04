@@ -1,8 +1,8 @@
-package com.example.mymiso.presentation.ui.viewmodels
+package com.example.mymiso.presentation.profile_screen.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mymiso.presentation.model.Data
+import com.example.mymiso.presentation.profile_screen.model.Data
 import com.example.mymiso.domain.repository.NewRepository
 import com.example.mymiso.util.Resource
 import kotlinx.coroutines.launch

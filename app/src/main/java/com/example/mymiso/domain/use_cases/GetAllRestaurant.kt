@@ -1,6 +1,6 @@
 package com.example.mymiso.domain.use_cases
 
-import com.example.mymiso.presentation.model.Restaurant
+import com.example.mymiso.presentation.home_screen.model.Restaurant
 
 class GetAllRestaurant {
     operator fun invoke(): List<Restaurant> {

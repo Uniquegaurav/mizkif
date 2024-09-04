@@ -1,4 +1,4 @@
-package com.example.mymiso.presentation.ui.fragments
+package com.example.mymiso.presentation.home_screen.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mymiso.R
 import com.example.mymiso.databinding.FragmentAllRestaurantBinding
 import com.example.mymiso.domain.use_cases.GetAllRestaurant
-import com.example.mymiso.presentation.adapter.AllRestaurantRecyclerViewAdapter
-import com.example.mymiso.presentation.ui.viewmodels.HomeScreenViewModel
+import com.example.mymiso.presentation.home_screen.adapter.AllRestaurantRecyclerViewAdapter
+import com.example.mymiso.presentation.home_screen.viewmodel.HomeScreenViewModel
 
 class FragmentAllRestaurant : Fragment(R.layout.fragment_all_restaurant) {
 

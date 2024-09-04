@@ -1,4 +1,4 @@
-package com.example.mymiso.presentation.ui.fragments
+package com.example.mymiso.presentation.profile_screen.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -9,12 +9,12 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mymiso.R
-import com.example.mymiso.presentation.adapter.UserRecyclerViewAdapter
+import com.example.mymiso.presentation.profile_screen.adapter.UserRecyclerViewAdapter
 import com.example.mymiso.databinding.FragmentShowUserBinding
 import com.example.mymiso.data.db.UserDatabase
 import com.example.mymiso.domain.repository.NewRepository
-import com.example.mymiso.presentation.ui.viewmodels.MainViewModel
-import com.example.mymiso.presentation.ui.viewmodels.ViewModelProviderFactory
+import com.example.mymiso.presentation.profile_screen.viewmodel.MainViewModel
+import com.example.mymiso.presentation.profile_screen.viewmodel.ViewModelProviderFactory
 import com.example.mymiso.util.Resource
 
 class ShowUserFragment : Fragment(R.layout.fragment_show_user) {

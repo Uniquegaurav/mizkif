@@ -1,16 +1,15 @@
-package com.example.mymiso.presentation.ui
+package com.example.mymiso.presentation.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.mymiso.R
 import com.example.mymiso.data.db.UserDatabase
 import com.example.mymiso.domain.repository.NewRepository
-import com.example.mymiso.presentation.ui.viewmodels.MainViewModel
-import com.example.mymiso.presentation.ui.viewmodels.ViewModelProviderFactory
+import com.example.mymiso.presentation.profile_screen.viewmodel.MainViewModel
+import com.example.mymiso.presentation.profile_screen.viewmodel.ViewModelProviderFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {

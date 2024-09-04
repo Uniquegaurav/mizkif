@@ -1,4 +1,4 @@
-package com.example.mymiso.presentation.ui.fragments
+package com.example.mymiso.presentation.home_screen.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.mymiso.R
 import com.example.mymiso.databinding.FragmentRecommendedRestaurantGridBinding
 import com.example.mymiso.domain.use_cases.GetRecommendedRestaurant
-import com.example.mymiso.presentation.adapter.AllRestaurantRecyclerViewAdapter
-import com.example.mymiso.presentation.adapter.RecommendedRestaurantRecyclerViewAdapter
-import com.example.mymiso.presentation.ui.viewmodels.HomeScreenViewModel
+import com.example.mymiso.presentation.home_screen.adapter.RecommendedRestaurantRecyclerViewAdapter
+import com.example.mymiso.presentation.home_screen.viewmodel.HomeScreenViewModel
 
 class FragmentRecommendedRestaurant : Fragment(R.layout.fragment_recommended_restaurant_grid) {
     private lateinit var recommendedRestaurantAdapter: RecommendedRestaurantRecyclerViewAdapter

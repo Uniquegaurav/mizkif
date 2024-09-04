@@ -6,7 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.mymiso.presentation.model.User
+import com.example.mymiso.presentation.profile_screen.model.User
 
 @Dao
 interface UserDao {

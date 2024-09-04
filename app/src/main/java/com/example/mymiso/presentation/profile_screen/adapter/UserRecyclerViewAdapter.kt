@@ -1,4 +1,4 @@
-package com.example.mymiso.presentation.adapter
+package com.example.mymiso.presentation.profile_screen.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mymiso.databinding.UserEachRowBinding
-import com.example.mymiso.presentation.model.User
+import com.example.mymiso.presentation.profile_screen.model.User
 
 class UserRecyclerViewAdapter : RecyclerView.Adapter<UserRecyclerViewAdapter.UserViewHolder>() {
 

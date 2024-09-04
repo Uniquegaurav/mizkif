@@ -1,4 +1,4 @@
-package com.example.mymiso.presentation.adapter
+package com.example.mymiso.presentation.home_screen.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mymiso.databinding.ItemRecommendedRestaurantBinding
-import com.example.mymiso.presentation.model.Restaurant
+import com.example.mymiso.presentation.home_screen.model.Restaurant
 
 class RecommendedRestaurantRecyclerViewAdapter :
     RecyclerView.Adapter<RecommendedRestaurantRecyclerViewAdapter.RecommendedRestaurantViewHolder>() {

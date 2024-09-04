@@ -1,4 +1,4 @@
-package com.example.mymiso.presentation.ui.viewmodels
+package com.example.mymiso.presentation.home_screen.viewmodel
 
 import androidx.lifecycle.ViewModel
 

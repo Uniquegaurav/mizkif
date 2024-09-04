@@ -1,5 +1,5 @@
 package com.example.mymiso.data.network
-import com.example.mymiso.presentation.model.Data
+import com.example.mymiso.presentation.profile_screen.model.Data
 import retrofit2.Response
 import retrofit2.http.GET
 

@@ -3,7 +3,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.mymiso.presentation.model.User
+import com.example.mymiso.presentation.profile_screen.model.User
 
 @Database(
     entities = [User::class], version = 1

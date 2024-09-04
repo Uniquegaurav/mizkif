@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/showUserFragment"
-        android:name="com.example.mymiso.presentation.ui.fragments.ShowUserFragment"
+        android:name="com.example.mymiso.presentation.profile_screen.fragments.ShowUserFragment"
         android:label="fragment_show_user"
         tools:layout="@layout/fragment_show_user" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/addUserFragment"
-        android:name="com.example.mymiso.presentation.ui.fragments.AddUserFragment"
+        android:name="com.example.mymiso.presentation.profile_screen.fragments.AddUserFragment"
         android:label="fragment_add_user"
         tools:layout="@layout/fragment_add_user" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentHomeScreen"
-        android:name="com.example.mymiso.presentation.ui.fragments.FragmentHomeScreen"
+        android:name="com.example.mymiso.presentation.home_screen.ui.fragments.FragmentHomeScreen"
         android:label="fragment_home_screen"
         tools:layout="@layout/fragment_home_screen" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentDineoutScreen"
-        android:name="com.example.mymiso.presentation.ui.fragments.FragmentDineoutScreen"
+        android:name="com.example.mymiso.presentation.dineout_screen.fragments.FragmentDineoutScreen"
         android:label="fragment_dineout_screen"
         tools:layout="@layout/fragment_dineout_screen" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentProfileScreen"
-        android:name="com.example.mymiso.presentation.ui.fragments.FragmentProfileScreen"
+        android:name="com.example.mymiso.presentation.profile_screen.fragments.FragmentProfileScreen"
         android:label="fragment_profile_screen"
         tools:layout="@layout/fragment_profile_screen" >
         <action
@@ -52,12 +52,12 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentDetailsScreen"
-        android:name="com.example.mymiso.presentation.ui.fragments.FragmentDetailsScreen"
+        android:name="com.example.mymiso.presentation.home_screen.ui.fragments.FragmentDetailsScreen"
         android:label="fragment_details_screen"
         tools:layout="@layout/fragment_details_screen" />
     <fragment
         android:id="@+id/fragmentSearchScreen"
-        android:name="com.example.mymiso.presentation.ui.fragments.FragmentSearchScreen"
+        android:name="com.example.mymiso.presentation.search_screen.fragments.FragmentSearchScreen"
         android:label="fragment_search_screen"
         tools:layout="@layout/fragment_search_screen" >
         <action
@@ -66,7 +66,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentSearchBar"
-        android:name="com.example.mymiso.presentation.ui.fragments.FragmentSearchBar"
+        android:name="com.example.mymiso.presentation.home_screen.ui.fragments.FragmentSearchBar"
         android:label="fragment_search_bar"
         tools:layout="@layout/fragment_search_bar" >
         <action

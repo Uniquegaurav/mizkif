@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentHomeScreen">
+    app:startDestination="@id/fragmentLandingScreen">
 
     <fragment
         android:id="@+id/showUserFragment"
@@ -14,6 +14,7 @@
             android:id="@+id/action_showUserFragment_to_addUserFragment"
             app:destination="@id/addUserFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/addUserFragment"
         android:name="com.example.mymiso.presentation.profile_screen.fragments.AddUserFragment"
@@ -23,15 +24,7 @@
             android:id="@+id/action_addUserFragment_to_showUserFragment"
             app:destination="@id/showUserFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/fragmentHomeScreen"
-        android:name="com.example.mymiso.presentation.home_screen.ui.fragments.FragmentHomeScreen"
-        android:label="fragment_home_screen"
-        tools:layout="@layout/fragment_home_screen" >
-        <action
-            android:id="@+id/action_fragmentHomeScreen_to_fragmentDetailsScreen"
-            app:destination="@id/fragmentDetailsScreen" />
-    </fragment>
+
     <fragment
         android:id="@+id/fragmentDineoutScreen"
         android:name="com.example.mymiso.presentation.dineout_screen.fragments.FragmentDineoutScreen"
@@ -41,6 +34,7 @@
             android:id="@+id/action_fragmentDineoutScreen_to_fragmentDetailsScreen"
             app:destination="@id/fragmentDetailsScreen" />
     </fragment>
+
     <fragment
         android:id="@+id/fragmentProfileScreen"
         android:name="com.example.mymiso.presentation.profile_screen.fragments.FragmentProfileScreen"
@@ -50,11 +44,13 @@
             android:id="@+id/action_fragmentProfileScreen_to_showUserFragment"
             app:destination="@id/showUserFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/fragmentDetailsScreen"
-        android:name="com.example.mymiso.presentation.home_screen.ui.fragments.FragmentDetailsScreen"
+        android:name="com.example.mymiso.presentation.landing_screen.ui.fragments.FragmentDetailsScreen"
         android:label="fragment_details_screen"
         tools:layout="@layout/fragment_details_screen" />
+
     <fragment
         android:id="@+id/fragmentSearchScreen"
         android:name="com.example.mymiso.presentation.search_screen.fragments.FragmentSearchScreen"
@@ -63,14 +59,28 @@
         <action
             android:id="@+id/action_fragmentSearchScreen_to_fragmentDetailsScreen"
             app:destination="@id/fragmentDetailsScreen" />
+
     </fragment>
     <fragment
         android:id="@+id/fragmentSearchBar"
-        android:name="com.example.mymiso.presentation.home_screen.ui.fragments.FragmentSearchBar"
+        android:name="com.example.mymiso.presentation.landing_screen.ui.fragments.FragmentSearchBar"
         android:label="fragment_search_bar"
         tools:layout="@layout/fragment_search_bar" >
         <action
             android:id="@+id/action_fragmentSearchBar_to_fragmentSearchScreen"
             app:destination="@id/fragmentSearchScreen" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentListingScreen"
+        android:name="com.example.mymiso.presentation.landing_screen.ui.fragments.FragmentListingScreen"
+        android:label="FragmentListingScreen" />
+    <fragment
+        android:id="@+id/fragmentLandingScreen"
+        android:name="com.example.mymiso.presentation.landing_screen.ui.fragments.FragmentLandingScreen"
+        android:label="FragmentLandingScreen" >
+        <action
+            android:id="@+id/action_fragmentLandingScreen_to_fragmentSearchScreen"
+            app:destination="@id/fragmentSearchScreen" />
+    </fragment>
+
 </navigation>

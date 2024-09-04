@@ -1,4 +1,4 @@
-package com.example.mymiso.presentation.home_screen.ui.fragments
+package com.example.mymiso.presentation.landing_screen.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,13 +10,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.mymiso.R
 import com.example.mymiso.databinding.FragmentRecommendedRestaurantGridBinding
 import com.example.mymiso.domain.use_cases.GetRecommendedRestaurant
-import com.example.mymiso.presentation.home_screen.adapter.RecommendedRestaurantRecyclerViewAdapter
-import com.example.mymiso.presentation.home_screen.viewmodel.HomeScreenViewModel
+import com.example.mymiso.presentation.landing_screen.adapter.RecommendedRestaurantRecyclerViewAdapter
+import com.example.mymiso.presentation.landing_screen.viewmodel.LandingScreenViewModel
 
 class FragmentRecommendedRestaurant : Fragment(R.layout.fragment_recommended_restaurant_grid) {
     private lateinit var recommendedRestaurantAdapter: RecommendedRestaurantRecyclerViewAdapter
     private var _binding: FragmentRecommendedRestaurantGridBinding? = null
-    private lateinit var viewModel: HomeScreenViewModel
+    private lateinit var viewModel: LandingScreenViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,7 +41,7 @@ class FragmentRecommendedRestaurant : Fragment(R.layout.fragment_recommended_res
     }
 
     private fun setUpViewModel() {
-        viewModel = ViewModelProvider(requireActivity())[HomeScreenViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[LandingScreenViewModel::class.java]
     }
 
     private fun setUpRecyclerView() {

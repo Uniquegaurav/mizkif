@@ -1,4 +1,4 @@
-package com.example.mymiso.presentation.home_screen.model
+package com.example.mymiso.presentation.landing_screen.model
 
 data class Restaurant(
     val id: String,

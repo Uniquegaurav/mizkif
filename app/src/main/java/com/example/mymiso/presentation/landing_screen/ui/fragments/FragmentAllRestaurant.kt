@@ -1,5 +1,4 @@
-package com.example.mymiso.presentation.home_screen.ui.fragments
-
+package com.example.mymiso.presentation.landing_screen.ui.fragments
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,13 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mymiso.R
 import com.example.mymiso.databinding.FragmentAllRestaurantBinding
 import com.example.mymiso.domain.use_cases.GetAllRestaurant
-import com.example.mymiso.presentation.home_screen.adapter.AllRestaurantRecyclerViewAdapter
-import com.example.mymiso.presentation.home_screen.viewmodel.HomeScreenViewModel
+import com.example.mymiso.presentation.landing_screen.adapter.AllRestaurantRecyclerViewAdapter
+import com.example.mymiso.presentation.landing_screen.viewmodel.LandingScreenViewModel
 
 class FragmentAllRestaurant : Fragment(R.layout.fragment_all_restaurant) {
 
     private lateinit var allRestaurantRecyclerViewAdapter: AllRestaurantRecyclerViewAdapter
-    private lateinit var viewModel: HomeScreenViewModel
+    private lateinit var viewModel: LandingScreenViewModel
     private var _binding: FragmentAllRestaurantBinding? = null
 
     override fun onCreateView(
@@ -36,7 +35,7 @@ class FragmentAllRestaurant : Fragment(R.layout.fragment_all_restaurant) {
     }
 
     private fun setUpViewModel() {
-        viewModel = ViewModelProvider(requireActivity())[HomeScreenViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[LandingScreenViewModel::class.java]
     }
 
     private fun setUpRecyclerView() {

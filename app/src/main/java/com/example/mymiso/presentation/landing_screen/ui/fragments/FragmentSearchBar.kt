@@ -1,4 +1,4 @@
-package com.example.mymiso.presentation.home_screen.ui.fragments
+package com.example.mymiso.presentation.landing_screen.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import com.example.mymiso.R
 import com.example.mymiso.databinding.FragmentSearchBarBinding
 import com.example.mymiso.presentation.navigation.MainNavigationViewModel

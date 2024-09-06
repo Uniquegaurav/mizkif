@@ -1,43 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.search_screen.fragments.FragmentSearchScreen">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:id="@+id/searchBarLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/search_bar_background"
-        android:padding="8dp"
-        android:gravity="center_vertical">
+        android:padding="8dp">
 
-        <!-- Search Icon -->
-        <ImageView
-            android:id="@+id/searchIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/search"
-            android:tint="@color/black"
-            android:layout_marginEnd="8dp" />
-
-        <!-- Search Bar EditText -->
-        <EditText
-            android:id="@+id/searchBarEditText"
+        <!-- Search Bar Layout -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/searchBarLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Search..."
-            android:inputType="none"
-            android:focusable="false"
-            android:cursorVisible="false"
-            android:clickable="true"
-            android:background="@android:color/transparent"
-            android:textColor="@color/black"
+            android:background="@drawable/search_bar_background"
             android:padding="8dp"
-            android:drawablePadding="8dp" />
-    </LinearLayout>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-</FrameLayout>
+            <!-- Search Icon -->
+            <ImageView
+                android:id="@+id/searchIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/search"
+                android:tint="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Search Bar EditText -->
+            <EditText
+                android:id="@+id/searchBarEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Search..."
+                android:inputType="none"
+                android:focusable="false"
+                android:cursorVisible="false"
+                android:clickable="true"
+                android:background="@android:color/transparent"
+                android:textColor="@color/black"
+                android:padding="8dp"
+                android:drawablePadding="8dp"
+                app:layout_constraintStart_toEndOf="@id/searchIcon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Search Results RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchResultRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="8dp"
+            android:background="@color/white"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/searchBarLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

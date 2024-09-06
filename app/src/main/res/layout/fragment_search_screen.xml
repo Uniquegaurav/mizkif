@@ -5,10 +5,39 @@
     android:layout_height="match_parent"
     tools:context=".presentation.search_screen.fragments.FragmentSearchScreen">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/searchBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/search_bar_background"
+        android:padding="8dp"
+        android:gravity="center_vertical">
+
+        <!-- Search Icon -->
+        <ImageView
+            android:id="@+id/searchIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/search"
+            android:tint="@color/black"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Search Bar EditText -->
+        <EditText
+            android:id="@+id/searchBarEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Search..."
+            android:inputType="none"
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:clickable="true"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
+            android:padding="8dp"
+            android:drawablePadding="8dp" />
+    </LinearLayout>
 
 </FrameLayout>

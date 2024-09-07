@@ -1,5 +1,6 @@
 package com.example.mymiso.presentation.search_screen.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mymiso.domain.SearchResult
@@ -10,7 +11,7 @@ import kotlinx.coroutines.flow.*
 import java.io.IOException
 import kotlin.time.Duration.Companion.seconds
 
-class SearchViewModel(private val getSearchResult: GetSearchResult) : ViewModel() {
+class SearchViewModel : ViewModel() {
 
     private val _query = MutableStateFlow("")
     val query: StateFlow<String> get() = _query
@@ -41,11 +42,13 @@ class SearchViewModel(private val getSearchResult: GetSearchResult) : ViewModel(
                 if (cachedResult != null) {
                     flowOf(cachedResult)
                 } else {
+                    Log.d("SearchViewModel", "Fetching new results for: $query")
                     // Perform the API call in a background thread
-                    getSearchResult(query)
+                    GetSearchResult()(query)
                         .timeout(5.seconds)
                         .retry(2) { it is IOException }
                         .onEach { results ->
+                            Log.d("SearchViewModel", "Results fetched : $results")
                             lastSuccessfulResult = results
                             queryCache[query] = results
                         }
@@ -55,6 +58,7 @@ class SearchViewModel(private val getSearchResult: GetSearchResult) : ViewModel(
                 }
             }
             .onEach { results ->
+                Log.d("SearchViewModel", "Emitting results: $results")
                 _searchResults.value = results
             }
             .launchIn(viewModelScope)

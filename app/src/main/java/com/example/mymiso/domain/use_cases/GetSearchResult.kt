@@ -1,7 +1,6 @@
 package com.example.mymiso.domain.use_cases
 
-import androidx.room.Query
-import com.example.mymiso.domain.SearchResult
+import com.example.mymiso.domain.model.SearchResult
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

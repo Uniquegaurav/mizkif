@@ -3,7 +3,7 @@ package com.example.mymiso.presentation.search_screen.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mymiso.domain.SearchResult
+import com.example.mymiso.domain.model.SearchResult
 import com.example.mymiso.domain.use_cases.GetSearchResult
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview

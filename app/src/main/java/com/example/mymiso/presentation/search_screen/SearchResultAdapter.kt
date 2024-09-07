@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mymiso.databinding.ItemSearchResultBinding
-import com.example.mymiso.domain.SearchResult
+import com.example.mymiso.domain.model.SearchResult
 
 class SearchResultAdapter : RecyclerView.Adapter<SearchResultAdapter.SearchViewHolder>() {
     inner class SearchViewHolder(val binding: ItemSearchResultBinding) :

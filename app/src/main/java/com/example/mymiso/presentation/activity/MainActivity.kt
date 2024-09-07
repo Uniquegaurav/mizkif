@@ -25,8 +25,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        setUpViewModel()
+        init()
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
 
@@ -55,7 +54,7 @@ class MainActivity : AppCompatActivity() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 navigationViewModel.navigationState.collect { event ->
                     event?.let {
-                        handleNavigation(event)
+                        handleNavigationEvent(event)
                         navigationViewModel.clearNavigation()
                     }
                 }
@@ -67,11 +66,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun init() {
+        setUpViewModel()
+    }
+
     private fun setUpViewModel() {
         navigationViewModel = ViewModelProvider(this)[MainNavigationViewModel::class.java]
     }
 
-    private fun handleNavigation(event: NavigationEvent) {
+    private fun handleNavigationEvent(event: NavigationEvent) {
         when (event) {
             is NavigationEvent.ToFragmentSearchScreen -> {
                 replaceFragment(FragmentSearchScreen())

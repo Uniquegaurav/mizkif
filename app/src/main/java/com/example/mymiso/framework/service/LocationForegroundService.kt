@@ -1,12 +1,9 @@
 package com.example.mymiso.framework.service
-
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.Service
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
-import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.lifecycle.LifecycleService
 import androidx.lifecycle.lifecycleScope
@@ -17,8 +14,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
 @AndroidEntryPoint
-class LocationForegroundService : LifecycleService() {
+class LocationForegroundService @Inject constructor() : LifecycleService() {
 
     @Inject
     lateinit var startLocationTrackingUseCase: StartLocationTrackingUseCase

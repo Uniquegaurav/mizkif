@@ -8,6 +8,7 @@ import com.example.mymiso.domain.use_cases.GetSearchResult
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import java.io.IOException
 import kotlin.time.Duration.Companion.seconds
 
@@ -23,12 +24,17 @@ class SearchViewModel : ViewModel() {
     private var lastSuccessfulResult: List<SearchResult> = emptyList()
 
     init {
-        observeQuery()
+        observeQuery2()
     }
 
     fun updateQuery(newQuery: String) {
         _query.value = newQuery
     }
+
+
+    //In this approach, we use flatMapLatest to ensure only the latest API call is processed,
+    //and previous API calls are automatically canceled.
+
 
     @OptIn(ExperimentalCoroutinesApi::class, FlowPreview::class)
     private fun observeQuery() {
@@ -63,4 +69,52 @@ class SearchViewModel : ViewModel() {
             }
             .launchIn(viewModelScope)
     }
+    // In this approach, we allow parallel API calls to process without canceling them.
+    // We ensure only the result of the latest query updates the UI, even if earlier queries finish after the latest one.
+
+
+    @OptIn(ExperimentalCoroutinesApi::class, FlowPreview::class)
+    private fun observeQuery2() {
+        _query
+            .debounce(300)
+            .map { it.trim().lowercase() }
+            .filter { it.isNotEmpty() }
+            .distinctUntilChanged() // Only proceed if the query has changed
+            .onEach { query ->
+                val cachedResult = queryCache[query]
+                if (cachedResult != null) {
+                    // Emit cached result if it exists
+                    _searchResults.value = cachedResult
+                } else {
+                    // Store the current query to check later if it's the latest one
+                    val currentQuery = query
+
+                    // Perform parallel API call without canceling previous ones
+                    viewModelScope.launch {
+                        try {
+                            // Collect the Flow to get the results
+                            GetSearchResult()(query)
+                                .timeout(5.seconds)
+                                .retry(2) { it is IOException }
+                                .collect { results ->
+                                    // Only update the UI if this is the most recent query
+                                    if (currentQuery == _query.value) {
+                                        lastSuccessfulResult = results
+                                        queryCache[query] = results
+                                        _searchResults.value = results
+                                    }
+                                }
+                        } catch (e: Exception) {
+                            // On failure, emit the last successful result if the query is still the most recent one
+                            if (currentQuery == _query.value) {
+                                _searchResults.value = lastSuccessfulResult
+                            }
+                        }
+                    }
+                }
+            }
+            .launchIn(viewModelScope) // This is the main collector for the StateFlow
+    }
+
+
 }

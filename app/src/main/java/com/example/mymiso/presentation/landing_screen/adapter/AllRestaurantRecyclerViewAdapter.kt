@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.mymiso.databinding.ItemAllRestaurantBinding
-import com.example.mymiso.presentation.landing_screen.model.Restaurant
+import com.example.mymiso.domain.model.Restaurant
 
 class AllRestaurantRecyclerViewAdapter :
     RecyclerView.Adapter<AllRestaurantRecyclerViewAdapter.AllRestaurantViewHolder>() {

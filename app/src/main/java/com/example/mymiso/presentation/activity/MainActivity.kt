@@ -14,11 +14,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.mymiso.R
+import com.example.mymiso.framework.receiver.BatteryReceiver
 import com.example.mymiso.framework.service.LocationForegroundService
+import com.example.mymiso.framework.worker.SyncManager
 import com.example.mymiso.presentation.dineout_screen.fragments.FragmentDineoutScreen
 import com.example.mymiso.presentation.landing_screen.ui.fragments.FragmentLandingScreen
 import com.example.mymiso.presentation.navigation.MainNavigationViewModel
 import com.example.mymiso.presentation.navigation.NavigationEvent
+import com.example.mymiso.presentation.order_screen.viewmodel.BatteryViewModel
 import com.example.mymiso.presentation.profile_screen.fragments.FragmentProfileScreen
 import com.example.mymiso.presentation.search_screen.fragments.FragmentSearchScreen
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -26,12 +29,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 
-
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var navigationViewModel: MainNavigationViewModel
+    private lateinit var batteryReceiver: BatteryReceiver
+    private lateinit var batteryViewModel: BatteryViewModel
 
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
@@ -48,6 +52,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         init()
         checkPermissionsAndStartService()
+
+        val syncManager = SyncManager(applicationContext)
+        syncManager.startDataSync()
+
+        batteryReceiver = BatteryReceiver { batteryPercentage ->
+            batteryViewModel.onBatteryLevelChanged(batteryPercentage)
+        }
+        batteryReceiver.register(this)
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
 
@@ -125,6 +137,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpViewModel() {
         navigationViewModel = ViewModelProvider(this)[MainNavigationViewModel::class.java]
+        batteryViewModel = ViewModelProvider(this)[BatteryViewModel::class.java]
     }
 
     private fun handleNavigationEvent(event: NavigationEvent) {
@@ -142,5 +155,10 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.activity_fragment_container, fragment)
             .commit()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        batteryReceiver.unregister(this)
     }
 }

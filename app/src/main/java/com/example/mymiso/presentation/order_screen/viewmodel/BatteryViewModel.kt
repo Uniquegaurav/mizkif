@@ -6,12 +6,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class BatteryViewModel @Inject constructor() : ViewModel() {
+class BatteryViewModel : ViewModel() {
 
-    @Inject
-    private lateinit var batteryUseCase: BatteryUseCase
+//    @Inject
+//    private lateinit var batteryUseCase: BatteryUseCase(SyncManager())
 
     fun onBatteryLevelChanged(batteryPercentage: Int) {
-        batteryUseCase.handleBatteryLevelChange(batteryPercentage)
+//        batteryUseCase.handleBatteryLevelChange(batteryPercentage)
     }
 }

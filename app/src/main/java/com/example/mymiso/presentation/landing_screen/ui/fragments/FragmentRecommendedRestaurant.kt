@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.mymiso.R
 import com.example.mymiso.databinding.FragmentRecommendedRestaurantGridBinding
@@ -32,6 +33,10 @@ class FragmentRecommendedRestaurant : Fragment(R.layout.fragment_recommended_res
         setUpViewModel()
         setUpRecyclerView()
         recommendedRestaurantAdapter.differ.submitList(GetRecommendedRestaurant().invoke())
+        recommendedRestaurantAdapter.setOnItemClickListener {
+            requireParentFragment().findNavController()
+                .navigate(R.id.action_fragmentLandingScreen_to_fragmentDetailsScreen)
+        }
 
     }
 

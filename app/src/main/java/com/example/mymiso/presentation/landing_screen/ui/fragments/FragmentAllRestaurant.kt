@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mymiso.R
 import com.example.mymiso.databinding.FragmentAllRestaurantBinding
@@ -32,6 +33,9 @@ class FragmentAllRestaurant : Fragment(R.layout.fragment_all_restaurant) {
         setUpViewModel()
         setUpRecyclerView()
         allRestaurantRecyclerViewAdapter.differ.submitList(GetAllRestaurant().invoke())
+        allRestaurantRecyclerViewAdapter.setOnItemClickListener {
+            requireParentFragment().findNavController().navigate(R.id.action_fragmentLandingScreen_to_fragmentDetailsScreen)
+        }
     }
 
     private fun setUpViewModel() {

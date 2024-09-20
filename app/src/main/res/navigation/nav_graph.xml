@@ -68,6 +68,9 @@
         <action
             android:id="@+id/action_fragmentLandingScreen_to_fragmentSearchScreen"
             app:destination="@id/fragmentSearchScreen" />
+        <action
+            android:id="@+id/action_fragmentLandingScreen_to_fragmentDetailsScreen"
+            app:destination="@id/fragmentDetailsScreen" />
     </fragment>
 
 </navigation>

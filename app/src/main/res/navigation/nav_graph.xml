@@ -62,28 +62,12 @@
 
     </fragment>
     <fragment
-        android:id="@+id/fragmentSearchBar"
-        android:name="com.example.mymiso.presentation.landing_screen.ui.fragments.FragmentSearchBar"
-        android:label="fragment_search_bar"
-        tools:layout="@layout/fragment_search_bar" >
-        <action
-            android:id="@+id/action_fragmentSearchBar_to_fragmentSearchScreen"
-            app:destination="@id/fragmentSearchScreen" />
-    </fragment>
-    <fragment
-        android:id="@+id/fragmentListingScreen"
-        android:name="com.example.mymiso.presentation.landing_screen.ui.fragments.FragmentListingScreen"
-        android:label="FragmentListingScreen" />
-    <fragment
         android:id="@+id/fragmentLandingScreen"
         android:name="com.example.mymiso.presentation.landing_screen.ui.FragmentLandingScreen"
         android:label="FragmentLandingScreen" >
         <action
             android:id="@+id/action_fragmentLandingScreen_to_fragmentSearchScreen"
             app:destination="@id/fragmentSearchScreen" />
-        <action
-            android:id="@+id/action_fragmentLandingScreen_to_fragmentListingScreen"
-            app:destination="@id/fragmentListingScreen" />
     </fragment>
 
 </navigation>

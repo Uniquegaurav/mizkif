@@ -33,11 +33,6 @@ class FragmentRecommendedRestaurant : Fragment(R.layout.fragment_recommended_res
         setUpRecyclerView()
         recommendedRestaurantAdapter.differ.submitList(GetRecommendedRestaurant().invoke())
 
-//        recommendedRestaurantAdapter.setOnItemClickListener { restaurant ->
-//            viewModel.setSelectedRestaurant(restaurant)
-//        }
-
-
     }
 
     private fun setUpViewModel() {

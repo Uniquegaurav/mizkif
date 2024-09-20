@@ -7,6 +7,6 @@ import com.example.mymiso.domain.repository.NewRepository
 class ViewModelProviderFactory(private val repository: NewRepository) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return MainViewModel(repository) as T
+        return UserViewModel(repository) as T
     }
 }

@@ -6,7 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class BatteryViewModel : ViewModel() {
+class BatteryViewModel @Inject constructor(): ViewModel() {
 
 //    @Inject
 //    private lateinit var batteryUseCase: BatteryUseCase(SyncManager())

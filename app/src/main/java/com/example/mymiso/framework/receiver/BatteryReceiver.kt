@@ -6,7 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.BatteryManager
 
-class BatteryReceiver(private val onBatteryLevelChanged: (Int) -> Unit) : BroadcastReceiver() {
+class BatteryReceiver  (private val onBatteryLevelChanged: (Int) -> Unit) : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent?) {
         val level = intent?.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) ?: -1

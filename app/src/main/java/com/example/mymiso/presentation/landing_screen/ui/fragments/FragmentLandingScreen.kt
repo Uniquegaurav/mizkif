@@ -8,13 +8,9 @@ import androidx.fragment.app.Fragment
 import com.example.mymiso.R
 import com.example.mymiso.databinding.FragmentLandingScreenBinding
 import com.example.mymiso.presentation.landing_screen.viewmodel.LandingScreenViewModel
-import com.example.mymiso.presentation.navigation.MainNavigationViewModel
-
 class FragmentLandingScreen : Fragment(R.layout.fragment_landing_screen) {
 
     private lateinit var viewModel: LandingScreenViewModel
-    private lateinit var navigationViewModel: MainNavigationViewModel
-
     private var _binding: FragmentLandingScreenBinding? = null
     private val binding get() = _binding!!
 
@@ -22,7 +18,7 @@ class FragmentLandingScreen : Fragment(R.layout.fragment_landing_screen) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentLandingScreenBinding.inflate(inflater, container, false)
         return binding.root
     }

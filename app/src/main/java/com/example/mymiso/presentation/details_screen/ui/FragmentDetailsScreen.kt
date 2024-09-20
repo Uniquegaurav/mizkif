@@ -1,4 +1,4 @@
-package com.example.mymiso.presentation.landing_screen.ui.fragments
+package com.example.mymiso.presentation.details_screen.ui
 
 import androidx.fragment.app.Fragment
 import com.example.mymiso.R

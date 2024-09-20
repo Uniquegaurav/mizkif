@@ -1,4 +1,4 @@
-package com.example.mymiso.presentation.landing_screen.ui.fragments
+package com.example.mymiso.presentation.landing_screen.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.mymiso.R
 import com.example.mymiso.databinding.FragmentLandingScreenBinding
+import com.example.mymiso.presentation.landing_screen.ui.fragments.FragmentAllRestaurant
+import com.example.mymiso.presentation.landing_screen.ui.fragments.FragmentRecommendedRestaurant
+import com.example.mymiso.presentation.landing_screen.ui.fragments.FragmentSearchBar
 import com.example.mymiso.presentation.landing_screen.viewmodel.LandingScreenViewModel
 class FragmentLandingScreen : Fragment(R.layout.fragment_landing_screen) {
 

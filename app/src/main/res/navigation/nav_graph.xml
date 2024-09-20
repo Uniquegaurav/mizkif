@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/fragmentDineoutScreen"
-        android:name="com.example.mymiso.presentation.dineout_screen.fragments.FragmentDineoutScreen"
+        android:name="com.example.mymiso.presentation.dineout_screen.ui.FragmentDineoutScreen"
         android:label="fragment_dineout_screen"
         tools:layout="@layout/fragment_dineout_screen" >
         <action
@@ -47,7 +47,7 @@
 
     <fragment
         android:id="@+id/fragmentDetailsScreen"
-        android:name="com.example.mymiso.presentation.landing_screen.ui.fragments.FragmentDetailsScreen"
+        android:name="com.example.mymiso.presentation.details_screen.ui.FragmentDetailsScreen"
         android:label="fragment_details_screen"
         tools:layout="@layout/fragment_details_screen" />
 
@@ -76,7 +76,7 @@
         android:label="FragmentListingScreen" />
     <fragment
         android:id="@+id/fragmentLandingScreen"
-        android:name="com.example.mymiso.presentation.landing_screen.ui.fragments.FragmentLandingScreen"
+        android:name="com.example.mymiso.presentation.landing_screen.ui.FragmentLandingScreen"
         android:label="FragmentLandingScreen" >
         <action
             android:id="@+id/action_fragmentLandingScreen_to_fragmentSearchScreen"

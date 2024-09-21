@@ -1,4 +1,5 @@
 package com.example.mymiso.framework.service
+
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Intent
@@ -63,7 +64,7 @@ class LocationForegroundService @Inject constructor() : LifecycleService() {
             .setSmallIcon(android.R.drawable.ic_menu_mylocation)
             .build()
 
-//        startForeground(1, notification)
+        startForeground(1, notification)
     }
 
     override fun onDestroy() {

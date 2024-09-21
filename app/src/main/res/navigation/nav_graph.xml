@@ -49,7 +49,11 @@
         android:id="@+id/fragmentDetailsScreen"
         android:name="com.example.mymiso.presentation.details_screen.ui.FragmentDetailsScreen"
         android:label="fragment_details_screen"
-        tools:layout="@layout/fragment_details_screen" />
+        tools:layout="@layout/fragment_details_screen" >
+        <action
+            android:id="@+id/action_fragmentDetailsScreen_to_orderTrackingFragment"
+            app:destination="@id/orderTrackingFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragmentSearchScreen"
@@ -72,5 +76,10 @@
             android:id="@+id/action_fragmentLandingScreen_to_fragmentDetailsScreen"
             app:destination="@id/fragmentDetailsScreen" />
     </fragment>
+    <fragment
+        android:id="@+id/orderTrackingFragment"
+        android:name="com.example.mymiso.presentation.order_screen.fragment.OrderTrackingFragment"
+        android:label="fragment_order_tracking"
+        tools:layout="@layout/fragment_order_tracking" />
 
 </navigation>

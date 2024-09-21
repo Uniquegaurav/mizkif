@@ -12,7 +12,7 @@
             android:id="@+id/trackOrderButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Track Order" />
+            android:text="Stop Location Tracking" />
 
     </FrameLayout>
 </layout>

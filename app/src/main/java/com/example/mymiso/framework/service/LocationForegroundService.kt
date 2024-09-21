@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.lifecycle.LifecycleService
 import androidx.lifecycle.lifecycleScope
@@ -14,7 +15,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
 
 @AndroidEntryPoint
 class LocationForegroundService @Inject constructor() : LifecycleService() {
@@ -32,13 +32,15 @@ class LocationForegroundService @Inject constructor() : LifecycleService() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        super.onStartCommand(intent, flags, startId)
+        Log.d("LocationForegroundService", "Service Started")
 
+        // Start tracking location in the background
         lifecycleScope.launch(Dispatchers.IO) {
             startLocationTrackingUseCase()
-
         }
-        return super.onStartCommand(intent, flags, startId)
 
+        return START_STICKY
     }
 
     private fun createNotificationChannel() {
@@ -49,9 +51,9 @@ class LocationForegroundService @Inject constructor() : LifecycleService() {
             val notificationChannel = NotificationChannel(
                 channelID,
                 "Location Service",
-                NotificationManager.IMPORTANCE_DEFAULT
+                NotificationManager.IMPORTANCE_LOW
             ).apply {
-                description = "Tracking your location"
+                description = "Tracks your location for order updates"
             }
             notificationManager.createNotificationChannel(notificationChannel)
         }
@@ -59,16 +61,19 @@ class LocationForegroundService @Inject constructor() : LifecycleService() {
 
     private fun startForegroundService() {
         val notification = NotificationCompat.Builder(this, "LocationChannel")
-            .setContentTitle("Tracking Location")
-            .setContentText("Your location is being tracked")
+            .setContentTitle("Location Tracking Active")
+            .setContentText("We are tracking your location for updates.")
             .setSmallIcon(android.R.drawable.ic_menu_mylocation)
+            .setPriority(NotificationCompat.PRIORITY_LOW)
             .build()
 
+        Log.d("LocationForegroundService", "Foreground service started")
         startForeground(1, notification)
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        Log.d("LocationForegroundService", "Service Stopped")
         lifecycleScope.launch(Dispatchers.IO) {
             stopLocationTrackingUseCase()
         }

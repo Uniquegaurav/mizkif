@@ -2,23 +2,80 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
         tools:context=".presentation.details_screen.ui.FragmentDetailsScreen">
 
-        <!-- TODO: Update blank fragment layout -->
-
-        <TextView
+        <!-- Restaurant Image -->
+        <ImageView
+            android:id="@+id/restaurantImageView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            android:contentDescription="content" />
 
-        <Button
-            android:id="@+id/placeOrderButton"
+        <!-- Restaurant Name -->
+        <TextView
+            android:id="@+id/restaurantNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Restaurant Name"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+
+        <!-- Restaurant Rating -->
+        <TextView
+            android:id="@+id/restaurantRatingTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Place Order" />
+            android:text="Rating: 4.5"
+            android:textSize="16sp"
+            android:drawableLeft="@drawable/ic_launcher_background"
+            android:paddingBottom="8dp" />
 
-    </FrameLayout>
+        <!-- Restaurant Description -->
+        <TextView
+            android:id="@+id/restaurantDescriptionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This is a great place to enjoy your meals. The ambience is perfect for a casual dining experience."
+            android:textSize="14sp"
+            android:paddingBottom="16dp" />
+
+        <!-- Menu List (Placeholder for RecyclerView) -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menu"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <!-- Add RecyclerView for Menu Items here -->
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/menuRecyclerView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:scrollbars="vertical"-->
+<!--            tools:listitem="@layout/menu_item_layout" />-->
+
+        <!-- Place Order Button -->
+        <Button
+            android:id="@+id/placeOrderButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Place Order"
+            android:textSize="16sp"
+            android:backgroundTint="@color/design_default_color_primary"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
 </layout>

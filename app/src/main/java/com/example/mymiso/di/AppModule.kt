@@ -2,11 +2,13 @@ package com.example.mymiso.di
 
 import android.content.Context
 import com.example.mymiso.data.repository.LocationTrackerRepositoryImpl
+import com.example.mymiso.domain.repository.DeliveryPartnerLocationRepository
 import com.example.mymiso.domain.repository.LocationServiceRepository
 import com.example.mymiso.domain.repository.LocationTrackerRepository
 import com.example.mymiso.domain.use_cases.ObserveLocationUpdateUseCase
 import com.example.mymiso.domain.use_cases.StartLocationTrackingUseCase
 import com.example.mymiso.domain.use_cases.StopLocationTrackingUseCase
+import com.example.mymiso.domain.use_cases.TrackDeliveryPartnerLocationUseCase
 import com.example.mymiso.framework.location.FusedLocationService
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -56,6 +58,18 @@ object AppModule {
     @Provides
     fun provideObserveLocationUpdatesUseCase(locationTrackerRepository: LocationTrackerRepository): ObserveLocationUpdateUseCase {
         return ObserveLocationUpdateUseCase(locationTrackerRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun provideDeliveryPartnerLocationRepository(): DeliveryPartnerLocationRepository {
+        return DeliveryPartnerLocationRepository()
+    }
+
+    @Singleton
+    @Provides
+    fun provideTrackDeliveryPartnerLocationUseCase(repository: DeliveryPartnerLocationRepository): TrackDeliveryPartnerLocationUseCase {
+        return TrackDeliveryPartnerLocationUseCase(repository)
     }
 
 }

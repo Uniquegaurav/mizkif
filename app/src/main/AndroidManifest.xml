@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
 
     <application
         android:name=".MyApplication"
@@ -33,6 +35,10 @@
             android:name=".framework.service.LocationForegroundService"
             android:enabled="true"
             android:exported="false"
+            android:foregroundServiceType="location" />
+
+        <service
+            android:name=".framework.service.DeliveryTrackingService"
             android:foregroundServiceType="location" />
     </application>
 

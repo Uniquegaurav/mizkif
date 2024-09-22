@@ -1,4 +1,5 @@
 package com.example.mymiso.presentation.order_screen.fragment
+
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -15,7 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mymiso.R
 import com.example.mymiso.databinding.FragmentOrderTrackingBinding
 import com.example.mymiso.framework.receiver.BatteryReceiver
-import com.example.mymiso.framework.service.LocationForegroundService
+import com.example.mymiso.framework.service.DeliveryTrackingService
 import com.example.mymiso.presentation.order_screen.viewmodel.BatteryViewModel
 
 class OrderTrackingFragment : Fragment(R.layout.fragment_order_tracking) {
@@ -27,20 +28,28 @@ class OrderTrackingFragment : Fragment(R.layout.fragment_order_tracking) {
     private val requestLocationPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             if (isGranted) {
-                // Permission granted, proceed to start foreground service
-                startLocationService()
+                checkAndRequestNotificationPermission() // Check for notification permission
             } else {
                 Toast.makeText(requireContext(), "Location Permission Denied", Toast.LENGTH_SHORT).show()
             }
         }
 
-    // Background location permission launcher
     private val requestBackgroundLocationPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             if (isGranted) {
-                Toast.makeText(requireContext(), "Background Location Permission Granted", Toast.LENGTH_SHORT).show()
+                checkAndRequestNotificationPermission() // Check for notification permission
             } else {
                 Toast.makeText(requireContext(), "Background Location Permission Denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    private val requestNotificationPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                // Permission granted, proceed to start foreground service
+                startLocationService()
+            } else {
+                Toast.makeText(requireContext(), "Notification Permission Denied", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -68,17 +77,14 @@ class OrderTrackingFragment : Fragment(R.layout.fragment_order_tracking) {
     }
 
     private fun checkAndRequestLocationPermissions() {
-        when {
+        when (PackageManager.PERMISSION_GRANTED) {
             ContextCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED -> {
-                // Foreground location permission is already granted
+            ) -> {
                 checkAndRequestBackgroundPermission()
-                startLocationService()
             }
             else -> {
-                // Request foreground location permission
                 requestLocationPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
             }
         }
@@ -86,25 +92,43 @@ class OrderTrackingFragment : Fragment(R.layout.fragment_order_tracking) {
 
     private fun checkAndRequestBackgroundPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            // Check if background location permission is needed (Android 10 and above)
             if (ContextCompat.checkSelfPermission(
                     requireContext(),
                     Manifest.permission.ACCESS_BACKGROUND_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
                 requestBackgroundLocationPermissionLauncher.launch(Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+            } else {
+                checkAndRequestNotificationPermission() // Check for notification permission after background permission
             }
+        } else {
+            checkAndRequestNotificationPermission() // Directly check for notification permission for Android versions below Q
         }
     }
 
+    private fun checkAndRequestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                requestNotificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            } else {
+                startLocationService() // If already granted, start the service
+            }
+        } else {
+            startLocationService() // No need to check for notification permission for older versions
+        }
+    }
 
     private fun startLocationService() {
-        val intent = Intent(requireContext(), LocationForegroundService::class.java)
+        val intent = Intent(requireContext(), DeliveryTrackingService::class.java)
         ContextCompat.startForegroundService(requireContext(), intent)
     }
 
     private fun stopLocationService() {
-        val intent = Intent(requireContext(), LocationForegroundService::class.java)
+        val intent = Intent(requireContext(), DeliveryTrackingService::class.java)
         requireContext().stopService(intent)
     }
 

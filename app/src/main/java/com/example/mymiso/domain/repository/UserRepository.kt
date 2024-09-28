@@ -1,6 +1,8 @@
 package com.example.mymiso.domain.repository
-import com.example.mymiso.data.network.UserAPI
 
-class UserRepository (private val userClient : UserAPI) {
-    suspend fun getAllUsers() = userClient.getAllUsers();
+import com.example.mymiso.presentation.profile_screen.model.Data
+import retrofit2.Response
+
+interface UserRepository {
+    suspend fun getAllUsers(): Response<Data>
 }

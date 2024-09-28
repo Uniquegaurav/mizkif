@@ -14,15 +14,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    @Singleton
-    @Provides
-    fun provideUserAPIClient(): UserAPI {
-        return Retrofit.Builder()
-            .baseUrl("https://dummyjson.com")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(UserAPI::class.java)
-    }
+
 
 
 }

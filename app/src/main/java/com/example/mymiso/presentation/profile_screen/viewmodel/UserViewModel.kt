@@ -3,13 +3,18 @@ package com.example.mymiso.presentation.profile_screen.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mymiso.domain.use_cases.GetAllUsersUseCase
 import com.example.mymiso.presentation.profile_screen.model.Data
-import com.example.mymiso.domain.repository.UserRepository
 import com.example.mymiso.util.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import javax.inject.Inject
 
-class UserViewModel(private val repository: UserRepository) : ViewModel() {
+
+@HiltViewModel
+class UserViewModel @Inject constructor(private val getAllUsersUseCase: GetAllUsersUseCase) :
+    ViewModel() {
 
     val users: MutableLiveData<Resource<Data>> = MutableLiveData()
 
@@ -19,7 +24,7 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
 
     private fun getAllUser() = viewModelScope.launch {
         users.postValue(Resource.Loading())
-        val response = repository.getAllUsers()
+        val response = getAllUsersUseCase()
         users.postValue(handleResponse(response))
     }
 

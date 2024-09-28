@@ -1,10 +1,8 @@
 package com.example.mymiso.framework.service
-
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Intent
 import android.os.Build
-import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.lifecycle.LifecycleService
@@ -34,12 +32,9 @@ class LocationForegroundService @Inject constructor() : LifecycleService() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
         Log.d("LocationForegroundService", "Service Started")
-
-        // Start tracking location in the background
         lifecycleScope.launch(Dispatchers.IO) {
             startLocationTrackingUseCase()
         }
-
         return START_STICKY
     }
 
@@ -77,9 +72,5 @@ class LocationForegroundService @Inject constructor() : LifecycleService() {
         lifecycleScope.launch(Dispatchers.IO) {
             stopLocationTrackingUseCase()
         }
-    }
-
-    override fun onBind(intent: Intent): IBinder? {
-        return super.onBind(intent)
     }
 }

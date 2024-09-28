@@ -16,7 +16,6 @@ class FusedLocationService(private val fusedLocationClient: FusedLocationProvide
         val locationCallback = object : LocationCallback() {
             override fun onLocationResult(result: LocationResult) {
                 for (location in result.locations) {
-                    // try send is a method of callbackFlow for sending values to the flow in a non-blocking way
                     trySend(Location(location.latitude, location.longitude))
                 }
             }

@@ -12,7 +12,7 @@ import com.example.mymiso.R
 import com.example.mymiso.presentation.profile_screen.adapter.UserRecyclerViewAdapter
 import com.example.mymiso.databinding.FragmentShowUserBinding
 import com.example.mymiso.data.db.UserDatabase
-import com.example.mymiso.domain.repository.NewRepository
+import com.example.mymiso.domain.repository.UserRepository
 import com.example.mymiso.presentation.profile_screen.viewmodel.UserViewModel
 import com.example.mymiso.presentation.profile_screen.viewmodel.ViewModelProviderFactory
 import com.example.mymiso.util.Resource
@@ -38,10 +38,10 @@ class ShowUserFragment : Fragment(R.layout.fragment_show_user) {
 
         }
 
-        val newRepository = NewRepository(UserDatabase(requireContext()))
+        val userRepository = UserRepository(UserDatabase(requireContext()))
         viewModel = ViewModelProvider(
             requireActivity(),
-            ViewModelProviderFactory(newRepository)
+            ViewModelProviderFactory(userRepository)
         )[UserViewModel::class.java]
 
         viewModel.users.observe(viewLifecycleOwner) { response ->

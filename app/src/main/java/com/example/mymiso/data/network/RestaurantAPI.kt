@@ -1,11 +1,8 @@
 package com.example.mymiso.data.network
-
 import com.example.mymiso.domain.model.Location
 import com.example.mymiso.domain.model.Restaurant
 import com.example.mymiso.domain.model.SearchResult
 import retrofit2.http.GET
-import retrofit2.http.Path
-
 interface RestaurantAPI {
 
     @GET("restaurants")

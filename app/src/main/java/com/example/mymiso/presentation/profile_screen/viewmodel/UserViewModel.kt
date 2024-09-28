@@ -4,12 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mymiso.presentation.profile_screen.model.Data
-import com.example.mymiso.domain.repository.NewRepository
+import com.example.mymiso.domain.repository.UserRepository
 import com.example.mymiso.util.Resource
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class UserViewModel(private val repository: NewRepository) : ViewModel() {
+class UserViewModel(private val repository: UserRepository) : ViewModel() {
 
     val users: MutableLiveData<Resource<Data>> = MutableLiveData()
 

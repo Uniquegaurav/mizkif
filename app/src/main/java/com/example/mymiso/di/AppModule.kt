@@ -1,22 +1,12 @@
 package com.example.mymiso.di
 
-import android.content.Context
-import com.example.mymiso.data.repository.LocationTrackerRepositoryImpl
-import com.example.mymiso.domain.repository.DeliveryPartnerLocationRepository
-import com.example.mymiso.domain.repository.LocationServiceRepository
-import com.example.mymiso.domain.repository.LocationTrackerRepository
-import com.example.mymiso.domain.use_cases.ObserveLocationUpdateUseCase
-import com.example.mymiso.domain.use_cases.StartLocationTrackingUseCase
-import com.example.mymiso.domain.use_cases.StopLocationTrackingUseCase
-import com.example.mymiso.domain.use_cases.TrackDeliveryPartnerLocationUseCase
-import com.example.mymiso.framework.location.FusedLocationService
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
+import com.example.mymiso.data.network.UserAPI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 
@@ -26,50 +16,13 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideFusedLocationClient(@ApplicationContext context: Context): FusedLocationProviderClient {
-        return LocationServices.getFusedLocationProviderClient(context)
+    fun provideUserAPIClient(): UserAPI {
+        return Retrofit.Builder()
+            .baseUrl("https://dummyjson.com")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(UserAPI::class.java)
     }
 
-    @Singleton
-    @Provides
-    fun provideLocationServiceRepository(fusedLocationProviderClient: FusedLocationProviderClient): LocationServiceRepository {
-        return FusedLocationService(fusedLocationProviderClient)
-    }
-
-    @Singleton
-    @Provides
-    fun provideLocationTracker(locationServiceRepository: LocationServiceRepository): LocationTrackerRepository {
-        return LocationTrackerRepositoryImpl(locationServiceRepository)
-    }
-
-    @Singleton
-    @Provides
-    fun provideStartLocationTrackingUseCase(locationTrackerRepository: LocationTrackerRepository): StartLocationTrackingUseCase {
-        return StartLocationTrackingUseCase(locationTrackerRepository)
-    }
-
-    @Singleton
-    @Provides
-    fun provideStopLocationTrackingUseCase(locationTrackerRepository: LocationTrackerRepository): StopLocationTrackingUseCase {
-        return StopLocationTrackingUseCase(locationTrackerRepository)
-    }
-
-    @Singleton
-    @Provides
-    fun provideObserveLocationUpdatesUseCase(locationTrackerRepository: LocationTrackerRepository): ObserveLocationUpdateUseCase {
-        return ObserveLocationUpdateUseCase(locationTrackerRepository)
-    }
-
-    @Singleton
-    @Provides
-    fun provideDeliveryPartnerLocationRepository(): DeliveryPartnerLocationRepository {
-        return DeliveryPartnerLocationRepository()
-    }
-
-    @Singleton
-    @Provides
-    fun provideTrackDeliveryPartnerLocationUseCase(repository: DeliveryPartnerLocationRepository): TrackDeliveryPartnerLocationUseCase {
-        return TrackDeliveryPartnerLocationUseCase(repository)
-    }
 
 }

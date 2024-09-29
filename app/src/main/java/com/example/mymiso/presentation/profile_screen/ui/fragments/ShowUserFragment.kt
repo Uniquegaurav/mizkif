@@ -1,5 +1,4 @@
 package com.example.mymiso.presentation.profile_screen.ui.fragments
-
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,10 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mymiso.R
 import com.example.mymiso.presentation.profile_screen.adapter.UserRecyclerViewAdapter
 import com.example.mymiso.databinding.FragmentShowUserBinding
-import com.example.mymiso.data.db.UserDatabase
-import com.example.mymiso.domain.repository.UserRepository
 import com.example.mymiso.presentation.profile_screen.viewmodel.UserViewModel
-import com.example.mymiso.presentation.profile_screen.viewmodel.ViewModelProviderFactory
 import com.example.mymiso.util.Resource
 
 class ShowUserFragment : Fragment(R.layout.fragment_show_user) {
@@ -38,10 +34,8 @@ class ShowUserFragment : Fragment(R.layout.fragment_show_user) {
 
         }
 
-        val userRepository = UserRepository(UserDatabase(requireContext()))
         viewModel = ViewModelProvider(
             requireActivity(),
-            ViewModelProviderFactory(userRepository)
         )[UserViewModel::class.java]
 
         viewModel.users.observe(viewLifecycleOwner) { response ->

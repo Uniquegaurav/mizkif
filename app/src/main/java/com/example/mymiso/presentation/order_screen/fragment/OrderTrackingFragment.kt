@@ -99,7 +99,7 @@ class OrderTrackingFragment : Fragment(R.layout.fragment_order_tracking) {
             ) {
                 requestBackgroundLocationPermissionLauncher.launch(Manifest.permission.ACCESS_BACKGROUND_LOCATION)
             } else {
-                checkAndRequestNotificationPermission() // Check for notification permission after background permission
+                checkAndRequestNotificationPermission()
             }
         } else {
             checkAndRequestNotificationPermission() // Directly check for notification permission for Android versions below Q
